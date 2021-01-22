@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>縦書きビューアをVue.jsで作る。</title>
+    <script src="../vue.3.0.5.min.js"></script>
+    <script src="./radio-button-component.js"></script>
+    <script src="./main.js"></script>
+</head>
+<body>
+<h1><a href="https://github.com/ytyaru/JS.TatelevoN.Vue.20210122094419">縦書きビューアをVue.jsで作る。</a></h1>
+<div id="app">
+    <radio-button-component v-model="selected"></radio-button-component>
+<!--    <radio-button-component :selected="black" @update:selected="black = $event"></radio-button-component>-->
+</div>
+</body>
+</html>
