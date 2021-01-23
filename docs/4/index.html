@@ -10,7 +10,23 @@
 <body>
 <h1><a href="https://github.com/ytyaru/JS.TatelevoN.Vue.20210122094419">縦書きビューアをVue.jsで作る。</a></h1>
 <div id="app">
-    <radio-button-component v-model="selected"></radio-button-component>
+    <radio-button-component
+        :model-value="selected"
+        @update:model-value ="selected = $event"
+    ></radio-button-component>
+<!--
+    <radio-button-component
+        v-model="selected"
+        v-for="item of list"
+        :name="item.name"
+    >
+    </radio-button-component>
+-->
+    <!--
+ value="{{item.value}}" :value="selected" @input="$emit('update:selected', $event.target.value)"
+    -->
+<!--    <radio-button-component v-model="selected"></radio-button-component>-->
+<!--    <radio-button-component v-model="selected"></radio-button-component>-->
 <!--    <radio-button-component :selected="black" @update:selected="black = $event"></radio-button-component>-->
 </div>
 </body>

@@ -12,7 +12,29 @@ var RadioButtonComponent = {
             list,
         }
     },
-    props: ['selected'],
+    computed: {
+        value: {
+            get() {
+                console.log(`get: ${this.modelValue}`);
+                return this.modelValue;
+            },
+            set(value) {
+                console.log(`set: ${value}`, value);
+                this.$emit('update:modelValue', value);
+            }
+        }
+    },
+    props: ['modelValue'],
+//    props: ['selected'],
+    template: `
+        <ul>
+            <li v-for="item of list" :key="item.id">
+                <input  id="{{item.id}}" type="radio" name="{{name}}" v-model="value">
+                <label for="{{item.id}}" title="{{item.title}}">{{item.text}}</label>
+            </li>
+        </ul>
+    `,
+    /*
     template: `
         <ul>
             <li v-for="item of list" :key="item.id">
@@ -21,5 +43,6 @@ var RadioButtonComponent = {
             </li>
         </ul>
     `,
+    */
 }
 
