@@ -1,0 +1,53 @@
+var RadioButtonComponent = {
+    data() {
+        const name = 'color';
+        const selected = Vue.ref('black');
+        const list = [
+           {id:'setting-color-white', value:'white', title:'背景白', text:'白'},
+           {id:'setting-color-black', value:'black', title:'背景黒', text:'黒'},
+           {id:'setting-color-red',   value:'red',   title:'背景赤', text:'赤'},
+        ];
+        return {
+            name,
+            selected,
+            list,
+        }
+    },
+    props: ['modelValue'],
+    computed: {
+        value: {
+            get() {
+                console.log(`get: ${this.modelValue}`, this.modelValue);
+                return this.modelValue;
+            },
+            set(value) {
+                console.log(`set: ${value}`, value, this.modelValue);
+//                this.$emit('update:modelValue', value);
+//                this.$emit('input', value);
+                this.$emit('change', this.id);
+            }
+        }
+    },
+    template: `
+        <ul>
+            <li v-for="item of list" :key="item.id">
+                <input  id="{{item.id}}" type="radio" name="{{name}}" v-model="value">
+                <label for="{{item.id}}" title="{{item.title}}">{{item.text}}</label>
+            </li>
+        </ul>
+        <p>modelValue: {{modelValue}}</p>
+    `,
+    /*
+//    props: ['selected'],
+    emits: ['update:value'],
+    template: `
+        <ul>
+            <li v-for="item of list" :key="item.id">
+                <input  id="{{item.id}}" type="radio" name="{{name}}" value="{{item.value}}" :value="selected" @input="$emit('update:value', $event.target.value)">
+                <label for="{{item.id}}" title="{{item.title}}">{{item.text}}</label>
+            </li>
+        </ul>
+    `,
+    */
+}
+
